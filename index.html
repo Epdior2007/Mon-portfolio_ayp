@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>AGBODJA Yao Pascal — Portfolio Systèmes & Réseaux</title>
   
   <!-- Police Google Fonts: Comfortaa -->
@@ -12,17 +12,17 @@
 
   <style>
     /* ==========================================
-       VARIABLES ET PALETTE SANS BORDURES
+       VARIABLES ET RESET GLOBAL
        ========================================== */
     :root {
-      --bg-main: #0f172a;           /* Ardoise sombre */
-      --bg-section: #1e293b;        /* Section bleu ardoise */
-      --bg-card: #283548;           /* Cartes épurées sans bordure */
-      --bg-card-hover: #334155;     /* Survol plus clair */
-      --primary-blue: #38bdf8;      /* Cyan */
-      --accent-cyan: #06b6d4;       
-      --text-main: #f8fafc;         
-      --text-muted: #cbd5e1;        
+      --bg-main: #0f172a;
+      --bg-section: #1e293b;
+      --bg-card: #283548;
+      --bg-card-hover: #334155;
+      --primary-blue: #38bdf8;
+      --accent-cyan: #06b6d4;
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
       --font-main: 'Comfortaa', cursive, sans-serif;
       --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -31,25 +31,26 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
       border: none !important;
       outline: none;
     }
 
-    body {
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
       font-family: var(--font-main);
       background-color: var(--bg-main);
       color: var(--text-main);
       line-height: 1.6;
-      overflow-x: hidden; /* Empêche tout défilement horizontal indésirable */
     }
 
     /* ==========================================
-       ANIMATIONS ET EFFETS DE TRANSITION
+       ANIMATIONS ET SECTIONS
        ========================================== */
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(30px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
 
@@ -67,7 +68,7 @@
     }
 
     /* ==========================================
-       NAVBAR (CORRIGÉE POUR MOBILE)
+       NAVBAR
        ========================================== */
     header {
       position: fixed;
@@ -80,17 +81,17 @@
     }
 
     .nav-container {
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.5rem;
+      padding: 1rem;
     }
 
     .logo {
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: var(--primary-blue);
       text-decoration: none;
     }
@@ -99,16 +100,15 @@
 
     .nav-links {
       display: flex;
-      gap: 1.2rem;
+      gap: 1rem;
       list-style: none;
     }
 
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      transition: var(--transition-smooth);
     }
 
     .nav-links a:hover { color: var(--primary-blue); }
@@ -120,102 +120,99 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 8rem 1.5rem 4rem;
-      position: relative;
+      padding: 7rem 1rem 3rem;
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 25%, rgba(15, 23, 42, 0.8) 100%),
                   url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat fixed;
     }
 
     .hero-container {
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 3.5rem;
-      align-items: center;
+      grid-template-columns: 1fr;
+      gap: 2rem;
       width: 100%;
     }
 
+    @media (min-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+    }
+
     .hero-text h1 {
-      font-size: 3.2rem;
+      font-size: 2.3rem;
       font-weight: 700;
       line-height: 1.15;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .hero-text h1 span { color: var(--primary-blue); }
 
     .hero-text h2 {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       color: var(--primary-blue);
       font-weight: 600;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .hero-text p {
       color: var(--text-muted);
-      margin-bottom: 2rem;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      max-width: 680px;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     .badge-status {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       background: rgba(56, 189, 248, 0.15);
       color: var(--primary-blue);
-      padding: 0.5rem 1.2rem;
+      padding: 0.4rem 1rem;
       border-radius: 50px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .pulse-dot {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       background-color: var(--primary-blue);
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--primary-blue);
+      box-shadow: 0 0 8px var(--primary-blue);
       animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
       0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(56, 189, 248, 0); }
+      70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
       100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
     }
 
     .cta-buttons {
       display: flex;
-      gap: 1rem;
+      gap: 0.8rem;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 0.85rem 1.8rem;
+      padding: 0.8rem 1.5rem;
       border-radius: 12px;
       font-family: var(--font-main);
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
       text-decoration: none;
       transition: var(--transition-smooth);
       cursor: pointer;
       display: inline-block;
+      text-align: center;
     }
 
     .btn-primary {
       background: var(--accent-cyan);
       color: #0f172a;
-      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-blue);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
     }
 
     .btn-secondary {
@@ -223,25 +220,18 @@
       color: var(--text-main);
     }
 
-    .btn-secondary:hover {
-      background: rgba(56, 189, 248, 0.2);
-      color: var(--primary-blue);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
-    }
-
     .hero-card {
       background: rgba(30, 41, 59, 0.9);
-      border-radius: 24px;
-      padding: 1.2rem;
+      border-radius: 20px;
+      padding: 1rem;
       backdrop-filter: blur(12px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
     }
 
     .network-img-wrapper {
       width: 100%;
-      height: 280px;
-      border-radius: 16px;
+      height: 220px;
+      border-radius: 12px;
       overflow: hidden;
     }
 
@@ -252,208 +242,106 @@
     }
 
     .network-card-caption {
-      margin-top: 1rem;
+      margin-top: 0.8rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
     }
 
     .network-card-caption span { color: var(--primary-blue); font-weight: 600; }
 
     /* ==========================================
-       SECTIONS GÉNÉRALES
+       SECTIONS GLOBALES & GRILLES
        ========================================== */
     section {
-      padding: 4rem 1.5rem;
-      max-width: 1280px;
+      padding: 3rem 1rem;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     .interactive-section {
       background: var(--bg-section);
-      border-radius: 24px;
-      padding: 2.5rem 1.5rem;
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      padding: 2rem 1rem;
+      margin: 1rem 0;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
     .section-title {
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-weight: 700;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    /* ==========================================
-       GRID COMPÉTENCES
-       ========================================== */
-    .skills-grid {
+    .skills-grid, .certif-grid, .projects-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    @media (min-width: 768px) {
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .certif-grid, .projects-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (min-width: 1100px) {
-      .skills-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
+      .skills-grid { grid-template-columns: repeat(4, 1fr); }
+      .projects-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
-    .skill-card {
+    .skill-card, .certif-card, .project-card {
       background: var(--bg-card);
-      border-radius: 20px;
+      border-radius: 16px;
       padding: 1.5rem;
       transition: var(--transition-smooth);
       cursor: pointer;
-      user-select: none;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
-    .skill-card:hover {
-      transform: translateY(-6px);
-      background: var(--bg-card-hover);
-    }
-
-    .skill-card:active, .skill-card.zoomed {
-      transform: scale(1.05) !important;
-      box-shadow: 0 20px 40px rgba(56, 189, 248, 0.35) !important;
+    .skill-card:active, .certif-card:active, .project-card.zoomed, .skill-card.zoomed {
+      transform: scale(1.02);
       background: #3b495e !important;
-      z-index: 10;
     }
 
-    .skill-icon {
-      font-size: 2rem;
-      margin-bottom: 0.8rem;
-      display: inline-block;
-    }
+    .skill-icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: inline-block; }
+    .skill-card h3 { font-size: 1.05rem; margin-bottom: 1rem; color: var(--primary-blue); }
 
-    .skill-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      color: var(--primary-blue);
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .tag {
-      background: rgba(15, 23, 42, 0.7);
-      padding: 0.35rem 0.75rem;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      color: var(--text-main);
-    }
-
-    /* ==========================================
-       CERTIFICATIONS
-       ========================================== */
-    .certif-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .certif-card {
-      background: var(--bg-card);
-      border-radius: 20px;
-      padding: 1.5rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      transition: var(--transition-smooth);
-      cursor: pointer;
-    }
-
-    .certif-card:hover {
-      transform: translateY(-5px);
-      background: var(--bg-card-hover);
-    }
-
-    .certif-card:active, .certif-card.zoomed {
-      transform: scale(1.03) !important;
-      box-shadow: 0 20px 40px rgba(56, 189, 248, 0.3) !important;
-    }
-
-    .certif-badge {
-      background: rgba(56, 189, 248, 0.2);
-      color: var(--primary-blue);
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      flex-shrink: 0;
-      font-size: 0.85rem;
-    }
-
-    .certif-info h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
-    .certif-info p { font-size: 0.85rem; color: var(--text-muted); }
-
-    /* ==========================================
-       PROJETS
-       ========================================== */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .project-card {
-      background: var(--bg-card);
-      border-radius: 20px;
-      padding: 1.8rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: var(--transition-smooth);
-      cursor: pointer;
-    }
-
-    .project-card:hover {
-      transform: translateY(-6px);
-      background: var(--bg-card-hover);
-    }
-
-    .project-card:active, .project-card.zoomed {
-      transform: scale(1.03) !important;
-      box-shadow: 0 20px 40px rgba(56, 189, 248, 0.35) !important;
-      background: #3b495e !important;
-      z-index: 10;
-    }
-
-    .project-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.8rem;
-      color: var(--text-main);
-    }
-
-    .project-card p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .project-tech {
+    .skill-tags, .project-tech {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
     }
 
+    .tag, .tech-pill {
+      background: rgba(15, 23, 42, 0.7);
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: var(--text-main);
+    }
+
     .tech-pill {
       background: rgba(56, 189, 248, 0.18);
       color: var(--primary-blue);
-      font-size: 0.75rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 6px;
       font-weight: 600;
     }
+
+    .certif-card { display: flex; align-items: flex-start; gap: 1rem; }
+    .certif-badge {
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--primary-blue);
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; flex-shrink: 0; font-size: 0.8rem;
+    }
+    .certif-info h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+    .certif-info p { font-size: 0.85rem; color: var(--text-muted); }
+
+    .project-card { display: flex; flex-direction: column; justify-content: space-between; }
+    .project-card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; }
+    .project-card p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; }
 
     /* ==========================================
        CONTACT & FOOTER
@@ -461,68 +349,56 @@
     .contact-container {
       background: var(--bg-card);
       border-radius: 20px;
-      padding: 2.5rem 1.5rem;
+      padding: 2rem 1rem;
       text-align: center;
+    }
+
+    .contact-container p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
     }
 
     .contact-links {
       display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    @media (min-width: 600px) {
+      .contact-links {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
     }
 
     .contact-btn {
       background: rgba(255, 255, 255, 0.08);
       color: var(--text-main);
-      padding: 0.8rem 1.4rem;
+      padding: 0.8rem 1rem;
       border-radius: 12px;
       font-family: var(--font-main);
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       text-decoration: none;
-      transition: var(--transition-smooth);
-      display: inline-block;
+      word-break: break-all;
     }
 
     .contact-btn:hover {
       background: rgba(56, 189, 248, 0.2);
       color: var(--primary-blue);
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
     }
 
     footer {
       text-align: center;
-      padding: 2rem 1.5rem;
+      padding: 2rem 1rem;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
 
-    /* ==========================================
-       ADAPTATIONS RESPONSIVES STRICTES POUR MOBILE
-       ========================================== */
-    @media (max-width: 900px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-text h1 {
-        font-size: 2.4rem;
-      }
-      .cta-buttons {
-        justify-content: center;
-      }
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-      .nav-links {
-        display: none; /* Cache les liens texte sur très petits écrans pour éviter la superposition */
-      }
-      .logo {
-        font-size: 1.1rem;
-      }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -555,8 +431,8 @@
           Étudiant en fin de parcours de Licence Professionnelle à l'<strong>EPL (École Polytechnique de Lomé)</strong>, spécialité Systèmes et Réseaux Informatiques. Passionné par l'administration système, l'architecture réseau, la virtualisation et le déploiement d'infrastructures haute disponibilité résilientes.
         </p>
         <div class="cta-buttons">
-          <a href="#projects" class="btn btn-primary">Explorer mes projets</a>
-          <a href="#contact" class="btn btn-secondary">Me contacter</a>
+          <a href="#projects" class="btn btn-primary">Mes projets</a>
+          <a href="#contact" class="btn btn-secondary">Contact</a>
         </div>
       </div>
 
@@ -565,7 +441,7 @@
           <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1200&auto=format&fit=crop" alt="Architecture réseaux physiques">
         </div>
         <div class="network-card-caption">
-          <span>Infrastructures Physiques & Baies Réseaux</span>
+          <span>Infrastructures & Baies Réseaux</span>
           <span>● Actif</span>
         </div>
       </div>
@@ -586,7 +462,7 @@
           <div class="skill-tags">
             <span class="tag">Linux Ubuntu</span>
             <span class="tag">Debian</span>
-            <span class="tag">Windows Server 2019</span>
+            <span class="tag">Windows Server</span>
             <span class="tag">Active Directory</span>
             <span class="tag">DHCP / DNS</span>
             <span class="tag">WDS / RDS</span>
@@ -601,7 +477,7 @@
             <span class="tag">GNS3</span>
             <span class="tag">VMware Workstation</span>
             <span class="tag">VLANs & Trunking</span>
-            <span class="tag">Routage OSPF/RIP</span>
+            <span class="tag">OSPF / RIP</span>
           </div>
         </div>
 
@@ -613,7 +489,7 @@
             <span class="tag">Corosync</span>
             <span class="tag">Apache2 Failover</span>
             <span class="tag">BIND9</span>
-            <span class="tag">RAID (0, 1, 4, 5)</span>
+            <span class="tag">RAID (0,1,4,5)</span>
           </div>
         </div>
 
@@ -638,14 +514,14 @@
   <!-- CERTIFICATIONS -->
   <section id="certifications" class="reveal">
     <div class="interactive-section">
-      <h2 class="section-title">Certifications & Attestations</h2>
+      <h2 class="section-title">Certifications</h2>
       <div class="certif-grid">
         
         <div class="certif-card">
           <div class="certif-badge">CISCO</div>
           <div class="certif-info">
             <h3>Networking Basics</h3>
-            <p>Cisco Networking Academy — Fondamentaux des réseaux et connectivité</p>
+            <p>Cisco Networking Academy — Fondamentaux des réseaux</p>
           </div>
         </div>
 
@@ -653,7 +529,7 @@
           <div class="certif-badge">LPI</div>
           <div class="certif-info">
             <h3>NDG Linux Essentials</h3>
-            <p>Linux Professional Institute — Administration système Linux</p>
+            <p>Linux Professional Institute — Admin Linux</p>
           </div>
         </div>
 
@@ -672,41 +548,37 @@
         <div class="project-card">
           <div>
             <h3>Cluster Web Haute Disponibilité</h3>
-            <p>Mise en place d'un cluster actif/passif avec basculement automatique d'IP virtuelle et tolérance aux pannes pour assurer la continuité du service web.</p>
+            <p>Mise en place d'un cluster actif/passif avec basculement automatique d'IP virtuelle et tolérance aux pannes.</p>
           </div>
           <div class="project-tech">
             <span class="tech-pill">Ubuntu Server</span>
             <span class="tech-pill">Pacemaker</span>
             <span class="tech-pill">Corosync</span>
             <span class="tech-pill">Apache2</span>
-            <span class="tech-pill">BIND9</span>
           </div>
         </div>
 
         <div class="project-card">
           <div>
-            <h3>Infrastructure Windows & Déploiement PXE</h3>
-            <p>Centralisation des rôles réseau (AD DS, DHCP, DNS) et automatisation complète de l'installation d'OS via Windows Deployment Services (WDS) et fichiers Unattend.xml.</p>
+            <h3>Infrastructure Windows & PXE</h3>
+            <p>Centralisation des rôles réseau (AD DS, DHCP, DNS) et automatisation d'installation via WDS.</p>
           </div>
           <div class="project-tech">
-            <span class="tech-pill">Windows Server 2019</span>
+            <span class="tech-pill">Windows Server</span>
             <span class="tech-pill">AD DS</span>
-            <span class="tech-pill">WDS</span>
-            <span class="tech-pill">PXE</span>
-            <span class="tech-pill">Windows ADK</span>
+            <span class="tech-pill">WDS / PXE</span>
           </div>
         </div>
 
         <div class="project-card">
           <div>
-            <h3>Sauvegarde & Reprise d'Activité Oracle</h3>
-            <p>Conception et automatisation de stratégies de sauvegarde à chaud/froid avec Oracle RMAN et scripts Batch pour la protection des données d'entreprise.</p>
+            <h3>Sauvegarde & PRA Oracle</h3>
+            <p>Conception et automatisation de stratégies de sauvegarde avec Oracle RMAN et scripts Batch.</p>
           </div>
           <div class="project-tech">
             <span class="tech-pill">Oracle DB</span>
             <span class="tech-pill">RMAN</span>
             <span class="tech-pill">Batch Scripts</span>
-            <span class="tech-pill">SQL Developer</span>
           </div>
         </div>
 
@@ -719,25 +591,25 @@
   <!-- CONTACT -->
   <section id="contact" class="reveal">
     <div class="contact-container">
-      <h2 class="section-title" style="margin-bottom: 1rem;">Échangeons sur vos opportunités</h2>
-      <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto; font-size: 1rem; line-height: 1.6;">
-        Je suis actuellement disponible pour un stage de fin d'études en administration systèmes et réseaux. N'hésitez pas à me contacter !
+      <h2 class="section-title" style="margin-bottom: 0.8rem;">Échangeons !</h2>
+      <p>
+        Disponible pour un stage de fin d'études en administration systèmes et réseaux.
       </p>
       
       <div class="contact-links">
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=agbodjayaopascal@gmail.com" target="_blank" class="contact-btn">✉️ agbodjayaopascal@gmail.com</a>
         <a href="https://wa.me/22897529626" target="_blank" class="contact-btn">💬 WhatsApp : +228 97 52 96 26</a>
-        <a href="cv.pdf" target="_blank" class="contact-btn">📄 Télécharger mon CV (PDF)</a>
+        <a href="cv.pdf" target="_blank" class="contact-btn">📄 Télécharger mon CV</a>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 AGBODJA Yao Pascal — Administrateur Systèmes & Réseaux. Tous droits réservés.</p>
+    <p>© 2026 AGBODJA Yao Pascal — Admin Systèmes & Réseaux.</p>
   </footer>
 
-  <!-- SCRIPT INTERACTIF -->
+  <!-- SCRIPT -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const reveals = document.querySelectorAll('.reveal');
@@ -745,7 +617,7 @@
         const windowHeight = window.innerHeight;
         reveals.forEach(element => {
           const elementTop = element.getBoundingClientRect().top;
-          if (elementTop < windowHeight - 100) {
+          if (elementTop < windowHeight - 50) {
             element.classList.add('active');
           }
         });
@@ -755,7 +627,7 @@
 
       const clickableCards = document.querySelectorAll('.skill-card, .project-card, .certif-card');
       clickableCards.forEach(card => {
-        card.addEventListener('click', (e) => {
+        card.addEventListener('click', () => {
           clickableCards.forEach(c => {
             if (c !== card) c.classList.remove('zoomed');
           });
