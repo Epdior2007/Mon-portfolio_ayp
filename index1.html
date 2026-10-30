@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGBODJA Yao Pascal — Portfolio Systèmes & Réseaux</title>
+  
+  <!-- Police Google Fonts: Comfortaa -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================
+       VARIABLES ET PALETTE SANS BORDURES
+       ========================================== */
+    :root {
+      --bg-main: #0f172a;           /* Ardoise sombre */
+      --bg-section: #1e293b;        /* Section bleu ardoise */
+      --bg-card: #283548;           /* Cartes épurées sans bordure */
+      --bg-card-hover: #334155;     /* Survol plus clair */
+      --primary-blue: #38bdf8;      /* Cyan */
+      --accent-cyan: #06b6d4;       
+      --text-main: #f8fafc;         
+      --text-muted: #cbd5e1;        
+      --font-main: 'Comfortaa', cursive, sans-serif;
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      border: none !important; /* SUPPRESSION TOTALE DES BORDURES */
+      outline: none;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ==========================================
+       ANIMATIONS ET EFFETS DE TRANSITION
+       ========================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-divider {
+      height: 2px;
+      width: 80%;
+      margin: 0 auto;
+      background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+      opacity: 0.3;
+    }
+
+    /* ==========================================
+       NAVBAR
+       ========================================== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--primary-blue);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--text-main); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-links a:hover { color: var(--primary-blue); }
+
+    /* ==========================================
+       HERO SECTION
+       ========================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 9rem 2rem 5rem;
+      position: relative;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 25%, rgba(15, 23, 42, 0.8) 100%),
+                  url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat fixed;
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3.5rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-text h1 {
+      font-size: 3.6rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-text h1 span { color: var(--primary-blue); }
+
+    .hero-text h2 {
+      font-size: 1.5rem;
+      color: var(--primary-blue);
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-text p {
+      color: var(--text-muted);
+      margin-bottom: 2.2rem;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      max-width: 680px;
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary-blue);
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+    }
+
+    .pulse-dot {
+      width: 10px;
+      height: 10px;
+      background-color: var(--primary-blue);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary-blue);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(56, 189, 248, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 12px;
+      font-family: var(--font-main);
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--accent-cyan);
+      color: #0f172a;
+      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-blue);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--primary-blue);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
+    }
+
+    .hero-card {
+      background: rgba(30, 41, 59, 0.9);
+      border-radius: 24px;
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      transition: var(--transition-smooth);
+      overflow: hidden;
+    }
+
+    .network-img-wrapper {
+      width: 100%;
+      height: 320px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .network-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-smooth);
+    }
+
+    .network-card-caption {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .network-card-caption span { color: var(--primary-blue); font-weight: 600; }
+
+    /* ==========================================
+       SECTIONS SANS BORDURES & SANS TRAIT
+       ========================================== */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .interactive-section {
+      background: var(--bg-section);
+      border-radius: 24px;
+      padding: 3.5rem 2.5rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      transition: var(--transition-smooth);
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      display: none !important;
+    }
+
+    /* ==========================================
+       GRID COMPÉTENCES
+       ========================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.8rem;
+    }
+
+    @media (min-width: 1100px) {
+      .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+    }
+
+    .skill-card:active, .skill-card.zoomed {
+      transform: scale(1.08) !important;
+      box-shadow: 0 20px 40px rgba(56, 189, 248, 0.35) !important;
+      background: #3b495e !important;
+      z-index: 10;
+    }
+
+    .skill-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .skill-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      color: var(--primary-blue);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tag {
+      background: rgba(15, 23, 42, 0.7);
+      padding: 0.4rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      transition: var(--transition-smooth);
+    }
+
+    /* ==========================================
+       CERTIFICATIONS
+       ========================================== */
+    .certif-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .certif-card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+    }
+
+    .certif-card:hover {
+      transform: translateY(-5px);
+      background: var(--bg-card-hover);
+    }
+
+    .certif-card:active, .certif-card.zoomed {
+      transform: scale(1.06) !important;
+      box-shadow: 0 20px 40px rgba(56, 189, 248, 0.3) !important;
+    }
+
+    .certif-badge {
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--primary-blue);
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+
+    .certif-info h3 { font-size: 1.15rem; margin-bottom: 0.3rem; }
+    .certif-info p { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* ==========================================
+       PROJETS
+       ========================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border-radius: 24px;
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+    }
+
+    .project-card:active, .project-card.zoomed {
+      transform: scale(1.07) !important;
+      box-shadow: 0 20px 40px rgba(56, 189, 248, 0.35) !important;
+      background: #3b495e !important;
+      z-index: 10;
+    }
+
+    .project-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-main);
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-pill {
+      background: rgba(56, 189, 248, 0.18);
+      color: var(--primary-blue);
+      font-size: 0.8rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    /* ==========================================
+       CONTACT & FOOTER
+       ========================================== */
+    .contact-container {
+      background: var(--bg-card);
+      border-radius: 24px;
+      padding: 3.5rem;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+      padding: 0.9rem 1.8rem;
+      border-radius: 12px;
+      font-family: var(--font-main);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      display: inline-block;
+    }
+
+    .contact-btn:hover {
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--primary-blue);
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE MOBILE */
+    @media (max-width: 900px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .hero-container { grid-template-columns: 1fr; text-align: center; }
+      .hero-text h1 { font-size: 2.7rem; }
+      .cta-buttons { justify-content: center; }
+      .interactive-section { padding: 2rem 1.2rem; }
+      .contact-links { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="nav-container">
+      <a href="#" class="logo">AGBODJA<span>.sys</span></a>
+      <ul class="nav-links">
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-text">
+        <div class="badge-status">
+          <span class="pulse-dot"></span>
+          À la recherche d'un stage de fin d'études
+        </div>
+        <h1>AGBODJA Yao Pascal</h1>
+        <h2>Licence Professionnelle — Systèmes & Réseaux Informatiques</h2>
+        <p>
+          Étudiant en fin de parcours de Licence Professionnelle à l'<strong>EPL (École Polytechnique de Lomé)</strong>, spécialité Systèmes et Réseaux Informatiques. Passionné par l'administration système, l'architecture réseau, la virtualisation et le déploiement d'infrastructures haute disponibilité résilientes.
+        </p>
+        <div class="cta-buttons">
+          <a href="#projects" class="btn btn-primary">Explorer mes projets</a>
+          <a href="#contact" class="btn btn-secondary">Me contacter</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="network-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1200&auto=format&fit=crop" alt="Architecture réseaux physiques">
+        </div>
+        <div class="network-card-caption">
+          <span>Infrastructures Physiques & Baies Réseaux</span>
+          <span>● Actif</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- COMPÉTENCES -->
+  <section id="skills" class="reveal">
+    <div class="interactive-section">
+      <h2 class="section-title">Compétences Techniques</h2>
+      <div class="skills-grid">
+        
+        <div class="skill-card">
+          <span class="skill-icon">🖥️</span>
+          <h3>Administration Systèmes</h3>
+          <div class="skill-tags">
+            <span class="tag">Linux Ubuntu</span>
+            <span class="tag">Debian</span>
+            <span class="tag">Windows Server 2019</span>
+            <span class="tag">Active Directory</span>
+            <span class="tag">DHCP / DNS</span>
+            <span class="tag">WDS / RDS</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <span class="skill-icon">🌐</span>
+          <h3>Réseaux & Virtualisation</h3>
+          <div class="skill-tags">
+            <span class="tag">Cisco Packet Tracer</span>
+            <span class="tag">GNS3</span>
+            <span class="tag">VMware Workstation</span>
+            <span class="tag">VLANs & Trunking</span>
+            <span class="tag">Routage OSPF/RIP</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <span class="skill-icon">⚙️</span>
+          <h3>Haute Disponibilité</h3>
+          <div class="skill-tags">
+            <span class="tag">Pacemaker</span>
+            <span class="tag">Corosync</span>
+            <span class="tag">Apache2 Failover</span>
+            <span class="tag">BIND9</span>
+            <span class="tag">RAID (0, 1, 4, 5)</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <span class="skill-icon">🗄️</span>
+          <h3>Bases de Données & Outils</h3>
+          <div class="skill-tags">
+            <span class="tag">Oracle Database</span>
+            <span class="tag">RMAN Backups</span>
+            <span class="tag">SQL Developer</span>
+            <span class="tag">Draw.io (MCD)</span>
+            <span class="tag">Scripts Batch/Shell</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="reveal">
+    <div class="interactive-section">
+      <h2 class="section-title">Certifications & Attestations</h2>
+      <div class="certif-grid">
+        
+        <div class="certif-card">
+          <div class="certif-badge">CISCO</div>
+          <div class="certif-info">
+            <h3>Networking Basics</h3>
+            <p>Cisco Networking Academy — Fondamentaux des réseaux et connectivité</p>
+          </div>
+        </div>
+
+        <div class="certif-card">
+          <div class="certif-badge">LPI</div>
+          <div class="certif-info">
+            <h3>NDG Linux Essentials</h3>
+            <p>Linux Professional Institute — Administration système Linux</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- PROJETS -->
+  <section id="projects" class="reveal">
+    <div class="interactive-section">
+      <h2 class="section-title">Projets & Réalisations</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div>
+            <h3>Cluster Web Haute Disponibilité</h3>
+            <p>Mise en place d'un cluster actif/passif avec basculement automatique d'IP virtuelle et tolérance aux pannes pour assurer la continuité du service web.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-pill">Ubuntu Server</span>
+            <span class="tech-pill">Pacemaker</span>
+            <span class="tech-pill">Corosync</span>
+            <span class="tech-pill">Apache2</span>
+            <span class="tech-pill">BIND9</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <h3>Infrastructure Windows & Déploiement PXE</h3>
+            <p>Centralisation des rôles réseau (AD DS, DHCP, DNS) et automatisation complète de l'installation d'OS via Windows Deployment Services (WDS) et fichiers Unattend.xml.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-pill">Windows Server 2019</span>
+            <span class="tech-pill">AD DS</span>
+            <span class="tech-pill">WDS</span>
+            <span class="tech-pill">PXE</span>
+            <span class="tech-pill">Windows ADK</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <h3>Sauvegarde & Reprise d'Activité Oracle</h3>
+            <p>Conception et automatisation de stratégies de sauvegarde à chaud/froid avec Oracle RMAN et scripts Batch pour la protection des données d'entreprise.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-pill">Oracle DB</span>
+            <span class="tech-pill">RMAN</span>
+            <span class="tech-pill">Batch Scripts</span>
+            <span class="tech-pill">SQL Developer</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="reveal">
+    <div class="contact-container">
+      <h2 class="section-title" style="margin-bottom: 1.5rem;">Échangeons sur vos opportunités</h2>
+      <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;">
+        Je suis actuellement disponible pour un stage de fin d'études en administration systèmes et réseaux. N'hésitez pas à me contacter !
+      </p>
+      
+      <div class="contact-links">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=agbodjayaopascal@gmail.com" target="_blank" class="contact-btn">✉️ agbodjayaopascal@gmail.com</a>
+        <a href="https://wa.me/22897529626" target="_blank" class="contact-btn">💬 WhatsApp : +228 97 52 96 26</a>
+        <a href="cv.pdf" target="_blank" class="contact-btn">📄 Télécharger mon CV (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 AGBODJA Yao Pascal — Administrateur Systèmes & Réseaux. Tous droits réservés.</p>
+  </footer>
+
+  <!-- SCRIPT INTERACTIF -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const reveals = document.querySelectorAll('.reveal');
+      const revealOnScroll = () => {
+        const windowHeight = window.innerHeight;
+        reveals.forEach(element => {
+          const elementTop = element.getBoundingClientRect().top;
+          if (elementTop < windowHeight - 100) {
+            element.classList.add('active');
+          }
+        });
+      };
+      window.addEventListener('scroll', revealOnScroll);
+      revealOnScroll();
+
+      const clickableCards = document.querySelectorAll('.skill-card, .project-card, .certif-card');
+      clickableCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+          clickableCards.forEach(c => {
+            if (c !== card) c.classList.remove('zoomed');
+          });
+          card.classList.toggle('zoomed');
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
