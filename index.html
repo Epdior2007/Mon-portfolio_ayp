@@ -253,7 +253,7 @@
     .network-card-caption span { color: var(--primary-blue); font-weight: 600; }
 
     /* ==========================================
-       SECTIONS GLOBALES & GRILLES
+       SECTIONS GLOBALES & TITRES CENTRALISÉS
        ========================================== */
     section {
       padding: 3rem 1rem;
@@ -269,10 +269,21 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
+    /* TOUS LES TITRES DE SECTIONS : CENTRÉS ET AGRANDIS */
     .section-title {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      width: 100%;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+
+    @media (min-width: 768px) {
+      .section-title {
+        font-size: 2.3rem;
+      }
     }
 
     .skills-grid, .certif-grid, .projects-grid {
@@ -514,7 +525,7 @@
   <!-- CERTIFICATIONS -->
   <section id="certifications" class="reveal">
     <div class="interactive-section">
-      <h2 class="section-title">Certifications</h2>
+      <h2 class="section-title">Certifications & Attestations</h2>
       <div class="certif-grid">
         
         <div class="certif-card">
@@ -591,22 +602,22 @@
   <!-- CONTACT -->
   <section id="contact" class="reveal">
     <div class="contact-container">
-      <h2 class="section-title" style="margin-bottom: 0.8rem;">Échangeons !</h2>
+      <h2 class="section-title">Échangeons sur vos opportunités</h2>
       <p>
-        Disponible pour un stage de fin d'études en administration systèmes et réseaux.
+        Je suis actuellement disponible pour un stage de fin d'études en administration systèmes et réseaux.
       </p>
       
       <div class="contact-links">
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=agbodjayaopascal@gmail.com" target="_blank" class="contact-btn">✉️ agbodjayaopascal@gmail.com</a>
         <a href="https://wa.me/22897529626" target="_blank" class="contact-btn">💬 WhatsApp : +228 97 52 96 26</a>
-        <a href="cv.pdf" target="_blank" class="contact-btn">📄 Télécharger mon CV</a>
+        <a href="cv.pdf" target="_blank" class="contact-btn">📄 Télécharger mon CV (PDF)</a>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 AGBODJA Yao Pascal — Admin Systèmes & Réseaux.</p>
+    <p>© 2026 AGBODJA Yao Pascal — Administrateur Systèmes & Réseaux. Tous droits réservés.</p>
   </footer>
 
   <!-- SCRIPT -->
