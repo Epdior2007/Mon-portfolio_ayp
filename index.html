@@ -269,7 +269,6 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
-    /* TOUS LES TITRES DE SECTIONS : CENTRÉS ET AGRANDIS */
     .section-title {
       font-size: 1.8rem;
       font-weight: 700;
@@ -286,7 +285,7 @@
       }
     }
 
-    .skills-grid, .certif-grid, .projects-grid {
+    .skills-grid, .certif-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 1.2rem;
@@ -294,15 +293,14 @@
 
     @media (min-width: 768px) {
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
-      .certif-grid, .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .certif-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (min-width: 1100px) {
       .skills-grid { grid-template-columns: repeat(4, 1fr); }
-      .projects-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
-    .skill-card, .certif-card, .project-card {
+    .skill-card, .certif-card {
       background: var(--bg-card);
       border-radius: 16px;
       padding: 1.5rem;
@@ -310,7 +308,7 @@
       cursor: pointer;
     }
 
-    .skill-card:active, .certif-card:active, .project-card.zoomed, .skill-card.zoomed {
+    .skill-card:active, .certif-card:active, .skill-card.zoomed {
       transform: scale(1.02);
       background: #3b495e !important;
     }
@@ -318,24 +316,18 @@
     .skill-icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: inline-block; }
     .skill-card h3 { font-size: 1.05rem; margin-bottom: 1rem; color: var(--primary-blue); }
 
-    .skill-tags, .project-tech {
+    .skill-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
     }
 
-    .tag, .tech-pill {
+    .tag {
       background: rgba(15, 23, 42, 0.7);
       padding: 0.3rem 0.6rem;
       border-radius: 6px;
       font-size: 0.75rem;
       color: var(--text-main);
-    }
-
-    .tech-pill {
-      background: rgba(56, 189, 248, 0.18);
-      color: var(--primary-blue);
-      font-weight: 600;
     }
 
     .certif-card { display: flex; align-items: flex-start; gap: 1rem; }
@@ -350,9 +342,90 @@
     .certif-info h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
     .certif-info p { font-size: 0.85rem; color: var(--text-muted); }
 
-    .project-card { display: flex; flex-direction: column; justify-content: space-between; }
-    .project-card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; }
-    .project-card p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; }
+    /* ==========================================
+       SECTION PROJETS AVEC IMAGES (NOUVEAU DESIGN)
+       ========================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    }
+
+    .project-card:hover, .project-card.zoomed {
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+      box-shadow: 0 15px 30px rgba(56, 189, 248, 0.2);
+    }
+
+    .project-img-wrapper {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-smooth);
+    }
+
+    .project-card:hover .project-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .project-content h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-main);
+    }
+
+    .project-content p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tech-pill {
+      background: rgba(56, 189, 248, 0.18);
+      color: var(--primary-blue);
+      font-size: 0.75rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
 
     /* ==========================================
        CONTACT & FOOTER
@@ -550,46 +623,64 @@
 
   <div class="section-divider"></div>
 
-  <!-- PROJETS -->
+  <!-- PROJETS & RÉALISATIONS AVEC IMAGES -->
   <section id="projects" class="reveal">
     <div class="interactive-section">
       <h2 class="section-title">Projets & Réalisations</h2>
       <div class="projects-grid">
 
+        <!-- Projet 1 : Cluster Web -->
         <div class="project-card">
-          <div>
-            <h3>Cluster Web Haute Disponibilité</h3>
-            <p>Mise en place d'un cluster actif/passif avec basculement automatique d'IP virtuelle et tolérance aux pannes.</p>
+          <div class="project-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop" alt="Cluster Haute Disponibilité">
           </div>
-          <div class="project-tech">
-            <span class="tech-pill">Ubuntu Server</span>
-            <span class="tech-pill">Pacemaker</span>
-            <span class="tech-pill">Corosync</span>
-            <span class="tech-pill">Apache2</span>
+          <div class="project-content">
+            <div>
+              <h3>Cluster Web Haute Disponibilité</h3>
+              <p>Mise en place d'un cluster actif/passif avec basculement automatique d'IP virtuelle et tolérance aux pannes.</p>
+            </div>
+            <div class="project-tech">
+              <span class="tech-pill">Ubuntu Server</span>
+              <span class="tech-pill">Pacemaker</span>
+              <span class="tech-pill">Corosync</span>
+              <span class="tech-pill">Apache2</span>
+            </div>
           </div>
         </div>
 
+        <!-- Projet 2 : Infrastructure Windows -->
         <div class="project-card">
-          <div>
-            <h3>Infrastructure Windows & PXE</h3>
-            <p>Centralisation des rôles réseau (AD DS, DHCP, DNS) et automatisation d'installation via WDS.</p>
+          <div class="project-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=800&auto=format&fit=crop" alt="Infrastructure Windows & PXE">
           </div>
-          <div class="project-tech">
-            <span class="tech-pill">Windows Server</span>
-            <span class="tech-pill">AD DS</span>
-            <span class="tech-pill">WDS / PXE</span>
+          <div class="project-content">
+            <div>
+              <h3>Infrastructure Windows & PXE</h3>
+              <p>Centralisation des rôles réseau (AD DS, DHCP, DNS) et automatisation d'installation d'OS via WDS et PXE.</p>
+            </div>
+            <div class="project-tech">
+              <span class="tech-pill">Windows Server</span>
+              <span class="tech-pill">AD DS</span>
+              <span class="tech-pill">WDS / PXE</span>
+            </div>
           </div>
         </div>
 
+        <!-- Projet 3 : Oracle DB -->
         <div class="project-card">
-          <div>
-            <h3>Sauvegarde & PRA Oracle</h3>
-            <p>Conception et automatisation de stratégies de sauvegarde avec Oracle RMAN et scripts Batch.</p>
+          <div class="project-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=800&auto=format&fit=crop" alt="Sauvegarde Oracle RMAN">
           </div>
-          <div class="project-tech">
-            <span class="tech-pill">Oracle DB</span>
-            <span class="tech-pill">RMAN</span>
-            <span class="tech-pill">Batch Scripts</span>
+          <div class="project-content">
+            <div>
+              <h3>Sauvegarde & PRA Oracle</h3>
+              <p>Conception et automatisation de stratégies de sauvegarde et reprise d'activité avec Oracle RMAN et scripts Batch.</p>
+            </div>
+            <div class="project-tech">
+              <span class="tech-pill">Oracle DB</span>
+              <span class="tech-pill">RMAN</span>
+              <span class="tech-pill">Batch Scripts</span>
+            </div>
           </div>
         </div>
 
